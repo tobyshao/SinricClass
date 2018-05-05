@@ -1,6 +1,6 @@
 # SinricClass
 
-## usage
+##### usage
 
 ```
 #include <Sinric.h>
@@ -10,13 +10,13 @@ const char* api_key = "your-api-key"
 const char* deviceId = "your-device-id"
 ...
 ```
-### define callback routine(s)
+##### define callback routine(s)
 ```
 void onPowerState(const string& deviceId, bool state) {
   Serial.printf("device %s turned %s\r\n, deviceId.c_str(), state?"on":"off");
   }
 ```
-### In setup()
+##### In setup()
 ```
 ...
 Sinric.begin(api_key);
@@ -27,7 +27,7 @@ mySwitch.onPowerState(onPowerState);
 ...
 ```
   
-### In loop()
+##### In loop()
 ```
 ...
 Sinric.handle();
