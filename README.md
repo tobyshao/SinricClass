@@ -35,5 +35,5 @@ Sinric.handle();
 ```
 
 ### Dependencies
-[WebSocketsClient](https://github.com/Links2004/arduinoWebSockets/releases)
-[ArduinoJson](https://arduinojson.org/)
+- [WebSocketsClient](https://github.com/Links2004/arduinoWebSockets/releases)
+- [ArduinoJson](https://arduinojson.org/)
