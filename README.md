@@ -38,12 +38,35 @@ void onPowerState(const string& deviceId, bool state) {
   Sinric.handle();
   ...
 ```
-## Implemented devices
+### Implemented devices
 - Switch (SinricSwitch in SinricSwitch.h)
-- Light (SinricLight in SinricLight.h)
-- Thermostat (SinricThermostat in SinricThermostat.h)
+  Callbacks:
+  ```
+  onPowerState()
+  ```
 
-## Simple add new or not yet implemented devices
+- Light (SinricLight in SinricLight.h)
+  Callbacks:
+  ```
+  onPowerState(const String& deviceId, bool state)
+  onSetBrightness(const String& deviceId, int brightness)
+  onAdjustBrightness(const String& deviceId, int brightness)
+  onSetColor(const String& deviceId, double hue, double sat, double value)
+  onDecColorTemperature(const String& deviceId)
+  onIncColorTemperature(const String& deviceId)
+  onSetColorTemperature(const String& deviceId, int colorTemperature)
+  ```
+
+- Thermostat (SinricThermostat in SinricThermostat.h)
+  Callbacks:
+  ```
+  onPowerState(const String& deviceIde, bool state)
+  onSetTargetTemperature(const String& deviceId, double temperature, const String& scale)
+  onAdjustTargetTemperature(const String& deviceId, double temperature, const String& scale)
+  onSetThermostatMode(const String& deviceId, const String& mode)
+  ```
+
+### Simple add new or not yet implemented devices
 - Make a new class derivered from SinricDevice (defined in SinricDevice.h)
 - Override constructor for propper callback init
 - Define prototype functions for needed callbacks
