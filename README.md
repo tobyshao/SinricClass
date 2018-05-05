@@ -1,6 +1,7 @@
 # SinricClass
 
-#### usage
+### usage
+#### include an define credentials
 
 ```
 #include <Sinric.h>
