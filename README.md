@@ -9,7 +9,7 @@ An easy to use class to connect to io.sinric.com and make your ESP-Projects alex
 ```
 ...
 #include <Sinric.h>
-#include <SinrichSwitch>
+#include <SinrichSwitch.h>
 ...
 const char* api_key = "your-api-key"
 const char* deviceId = "your-device-id"
@@ -38,7 +38,24 @@ void onPowerState(const string& deviceId, bool state) {
   Sinric.handle();
   ...
 ```
+## Implemented devices
+- Switch (SinricSwitch in SinricSwitch.h)
+- Light (SinricLight in SinricLight.h)
+- Thermostat (SinricThermostat in SinricThermostat.h)
 
-### Dependencies
+## Simple add new or not yet implemented devies
+- Make a new class derivered from SinricDevice (defined in SinricDevice.h)
+- Override constructor for propper callback init
+- Define prototype functions for needed callbacks
+- Provide callback setter function
+- Override handle() to handle incomming commands and call the right callbacks
+
+- Use the new device like the pre-defined 
+```
+myNewSinricDevice& newDevice = Sinric.add<myNewSinricDevice>(deviceId);
+newDevice.CallbackSetFunction(callback-function);
+```
+
+## Dependencies
 - [WebSocketsClient](https://github.com/Links2004/arduinoWebSockets/releases)
 - [ArduinoJson](https://arduinojson.org/)
