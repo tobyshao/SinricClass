@@ -66,7 +66,7 @@ void onPowerState(const string& deviceId, bool state) {
   onSetThermostatMode(const String& deviceId, const String& mode)
   ```
 
-### Simple add new or not yet implemented devices
+## Simple add new or not yet implemented devices
 - Make a new class derivered from ```SinricDevice``` (defined in SinricDevice.h)
 - Override constructor for propper callback init
 - Define prototype functions for needed callbacks
