@@ -1,6 +1,6 @@
 # SinricClass
 
-### usage
+## usage
 #### include an define credentials
 
 ```
