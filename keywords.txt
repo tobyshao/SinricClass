@@ -7,6 +7,11 @@
 #######################################
 
 Sinric	KEYWORD1
+SinricClass	KEYWORD1
+SinricDevice	KEYWORD1
+SinricSwitch	KEYWORD1
+SinricLight		KEYWORD1
+SinricThermostat	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
