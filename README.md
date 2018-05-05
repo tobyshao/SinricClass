@@ -43,7 +43,7 @@ void onPowerState(const string& deviceId, bool state) {
 - Light (SinricLight in SinricLight.h)
 - Thermostat (SinricThermostat in SinricThermostat.h)
 
-## Simple add new or not yet implemented devies
+## Simple add new or not yet implemented devices
 - Make a new class derivered from SinricDevice (defined in SinricDevice.h)
 - Override constructor for propper callback init
 - Define prototype functions for needed callbacks
