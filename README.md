@@ -33,3 +33,7 @@ mySwitch.onPowerState(onPowerState);
 Sinric.handle();
 ...
 ```
+
+### Dependencies
+WebSocketsClient (get it from https://github.com/Links2004/arduinoWebSockets/releases)
+ArduinoJson.h  (get it from https://arduinojson.org/ or install via Arduino library manager)
