@@ -38,15 +38,15 @@ void onPowerState(const string& deviceId, bool state) {
   Sinric.handle();
   ...
 ```
-### Implemented devices
+### Implemented devices and their callbacks
 - Switch (```SinricSwitch``` in SinricSwitch.h)
-  Callbacks:
+  - Callbacks:
   ```
   onPowerState(const String& deviceId, bool state)
   ```
 
 - Light (```SinricLight``` in SinricLight.h)
-  Callbacks:
+  - Callbacks:
   ```
   onPowerState(const String& deviceId, bool state)
   onSetBrightness(const String& deviceId, int brightness)
@@ -58,7 +58,7 @@ void onPowerState(const string& deviceId, bool state) {
   ```
 
 - Thermostat (```SinricThermostat``` in SinricThermostat.h)
-  Callbacks:
+  - Callbacks:
   ```
   onPowerState(const String& deviceIde, bool state)
   onSetTargetTemperature(const String& deviceId, double temperature, const String& scale)
