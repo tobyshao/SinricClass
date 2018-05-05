@@ -39,13 +39,13 @@ void onPowerState(const string& deviceId, bool state) {
   ...
 ```
 ### Implemented devices
-- Switch (SinricSwitch in SinricSwitch.h)
+- Switch (```SinricSwitch``` in SinricSwitch.h)
   Callbacks:
   ```
-  onPowerState()
+  onPowerState(const String& deviceId, bool state)
   ```
 
-- Light (SinricLight in SinricLight.h)
+- Light (```SinricLight``` in SinricLight.h)
   Callbacks:
   ```
   onPowerState(const String& deviceId, bool state)
@@ -57,7 +57,7 @@ void onPowerState(const string& deviceId, bool state) {
   onSetColorTemperature(const String& deviceId, int colorTemperature)
   ```
 
-- Thermostat (SinricThermostat in SinricThermostat.h)
+- Thermostat (```SinricThermostat``` in SinricThermostat.h)
   Callbacks:
   ```
   onPowerState(const String& deviceIde, bool state)
@@ -67,7 +67,7 @@ void onPowerState(const string& deviceId, bool state) {
   ```
 
 ### Simple add new or not yet implemented devices
-- Make a new class derivered from SinricDevice (defined in SinricDevice.h)
+- Make a new class derivered from ```SinricDevice``` (defined in SinricDevice.h)
 - Override constructor for propper callback init
 - Define prototype functions for needed callbacks
 - Provide callback setter function
