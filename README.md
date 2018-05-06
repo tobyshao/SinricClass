@@ -67,7 +67,7 @@ void onPowerState(const string& deviceId, bool state) {
   ```
 
 ## Simple add new or not yet implemented devices
-- Make a new class derivered from ```SinricDevice``` (defined in SinricDevice.h)
+- Make a new class derrivered from ```SinricDevice``` (defined in SinricDevice.h)
 - Override constructor for propper callback init
 - Define prototype functions for needed callbacks
 - Provide callback setter function
