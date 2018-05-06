@@ -1,7 +1,7 @@
 # SinricClass
 
 An easy to use class to connect to io.sinric.com and make your ESP-Projects alexa compatible
-- Big thank's to [kakopappa](https://github.com/kakopappa/sinric) for inventing and hosting sinric.com!
+- Big thank's to [kakopappa](https://github.com/kakopappa/sinric) for developement and hosting sinric.com!
 
 ## usage
 #### include Sinric-Library (Sinric.h) and Sinric-Device-Libraries (eg. SinricSwitch.h, SinricLight.h ...) an define credentials
