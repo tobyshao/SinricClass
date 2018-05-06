@@ -1,7 +1,7 @@
 # SinricClass
 
-An easy to use class to connect to io.sinric.com and make your ESP-Projects alexa compatible
-- Big thank's to [kakopappa](https://github.com/kakopappa/sinric) for developement and hosting sinric.com!
+An "easy to use" class for connecting your esp-module to io.sinric.com and make your projects alexa compatible.
+- Big thank's to [kakopappa](https://github.com/kakopappa/sinric) for developement and hosting of sinric.com!
 
 ## usage
 #### include Sinric-Library (Sinric.h) and Sinric-Device-Libraries (eg. SinricSwitch.h, SinricLight.h ...) an define credentials
@@ -79,6 +79,6 @@ myNewSinricDevice& newDevice = Sinric.add<myNewSinricDevice>(deviceId);
 newDevice.CallbackSetFunction(callback-function);
 ```
 
-## Dependencies
-- [WebSocketsClient](https://github.com/Links2004/arduinoWebSockets/releases)
-- [ArduinoJson](https://arduinojson.org/)
+## Dependencies / Needed libraries
+- WebSocketsClient -> https://github.com/Links2004/arduinoWebSockets/releases
+- ArduinoJson -> https://arduinojson.org/
