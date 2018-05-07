@@ -53,7 +53,6 @@ void SinricLight::handle(const String& action, JsonObject& json) {
   if ((action == "setPowerState") && (powerState)) {
     bool state = (strcmp("ON", json["value"]) == 0);
     powerState(deviceId, state);
-
     // setColor
   } else if ((action == "SetColor") && (setColor)) {
     double hue = json["value"]["hue"];

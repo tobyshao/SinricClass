@@ -16,6 +16,9 @@ class SinricClass {
     void handle();
     void stop();
     bool isConnected();
+	
+	void send(const char* data);
+	void send(const String& data);
 
     template <typename DeviceType> 
     DeviceType& add(const char* deviceId);
@@ -73,7 +76,7 @@ void SinricClass::handle() {
     unsigned long actualMillis = millis();
     if (actualMillis - _lastHeartBeat > (_heartBeatInterval * 1000)) {
       _lastHeartBeat = actualMillis;
-      client.sendTXT("H");
+      send("H");
     }
   }
 }
@@ -89,6 +92,17 @@ bool SinricClass::isConnected() {
   handle(); 
   return _is_connected;
 };
+
+void SinricClass::send(const char* data) {
+  if (_is_connected) {
+    client.sendTXT(data);
+  }
+}
+
+void SinricClass::send(const String& data) {
+  send(data.c_str());
+}
+
 
 void SinricClass::webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
   switch (type) {
