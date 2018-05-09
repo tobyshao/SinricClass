@@ -6,7 +6,6 @@
 
 class SinricLight : public SinricDevice {
 public:
-
   SinricLight(const char* deviceId);
 
   typedef std::function<void(SinricLight&, bool)>                   PowerStateCallback;

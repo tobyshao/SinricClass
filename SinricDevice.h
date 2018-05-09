@@ -8,6 +8,7 @@ class SinricDevice {
     SinricDevice(const char* newDeviceId);
     SinricDevice(const String& newDeviceId);
     ~SinricDevice();
+
     virtual void handle(const String& action, JsonObject& json) {};
     const char* getDeviceId();
   protected:
@@ -29,7 +30,7 @@ SinricDevice::~SinricDevice() {
 
 
 const char* SinricDevice::getDeviceId() {
-  return deviceId; 
+  return deviceId;
 };
 
 

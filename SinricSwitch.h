@@ -9,6 +9,7 @@ public:
   typedef std::function<void(SinricSwitch&, bool)> PowerStateCallback;
 
   SinricSwitch(const char* deviceId );
+  
   void onPowerState(PowerStateCallback callback) { powerState = callback; }
   void handle(const String& action, JsonObject& json) override;
 private:
