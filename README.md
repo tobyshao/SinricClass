@@ -66,7 +66,7 @@ void onPowerState(SinricSwitch& device, bool state) {
   onSetThermostatMode(SinricThermostat& device, const String& mode)
   ```
 
-## Simple add new or not yet implemented devices
+## Simply add new or not yet implemented devices
 - Make a new class derrivered from ```SinricDevice``` (defined in SinricDevice.h)
 - Override constructor for propper callback init
 - Define prototype functions for needed callbacks
