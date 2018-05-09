@@ -12,14 +12,14 @@ const char* api_key = "1aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee";
 const char* switchId = "500000000000000000000000";
 
 // callback for switch...
-void onPowerState(const String& deviceId, bool state) { 
-  Serial.printf("Switch turned %s \r\n", state?"on":"off");
+void onPowerState(SinricSwitch& device, bool state) {
+  Serial.printf("Switch id=%s turned %s \r\n", device.getDeviceId(), state?"on":"off");
 }
 
 
 // WiFi setup
 void setupWifi() {
-  Serial.begin(115200); 
+  Serial.begin(115200);
   delay(1000);
   Serial.printf("\r\nConnecting WiFi (%s)", ssid);
 
@@ -45,7 +45,7 @@ void setupSinric() {
   }
   Serial.println("connected!");
 
-  // add new Switch 
+  // add new Switch
   SinricSwitch& mySwitch = Sinric.add<SinricSwitch>(switchId);
   // set the callback
   mySwitch.onPowerState(onPowerState);
@@ -61,4 +61,3 @@ void setup() {
 void loop() {
   Sinric.handle();
 }
-

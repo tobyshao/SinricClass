@@ -17,8 +17,8 @@ class SinricClass {
     void stop();
     bool isConnected();
 	
-	void send(const char* data);
-	void send(const String& data);
+    void send(const char* data);
+    void send(const String& data);
 
     template <typename DeviceType> 
     DeviceType& add(const char* deviceId);

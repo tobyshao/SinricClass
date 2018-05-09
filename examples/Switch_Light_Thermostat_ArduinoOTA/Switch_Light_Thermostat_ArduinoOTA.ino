@@ -20,31 +20,24 @@ const char* thermoId = "522222222222222222222222";
 
 // callbacks for devices...
 
-void onPowerState(const String& deviceId, bool state) { 
-  Serial.printf("onPowerState(%s,%s) ", deviceId.c_str(), state?"true":"false");
-  if (deviceId == switchId) { 
-    Serial.println("(Switch)");
-  } else if (deviceId == lightId) { 
-    Serial.println("(Light)");
-  } else if (deviceId == thermoId) { 
-    Serial.println("(Thermo)");
-  }
-}
+void onPowerSwitch(SinricSwitch& device, bool state)         { Serial.printf("onPowerSwitch(%s,%s)", device.getDeviceId(), state?"true":"false"); }
+void onPowerLight(SinricLight& device, bool state)           { Serial.printf("onPowerSwitch(%s,%s)", device.getDeviceId(), state?"true":"false"); }
+void onPowerThermostat(SinricThermostat& device, bool state) { Serial.printf("onPowerSwitch(%s,%s)", device.getDeviceId(), state?"true":"false"); }
 
-void onSetColor(const String& deviceId, double hue, double sat, double val) { Serial.printf("onSetColor(%s,%f,%f,%f)\r\n", deviceId.c_str(), hue, sat, val); }
-void onSetBrightness(const String& deviceId, int bri)                       { Serial.printf("onSetBrightness(%s,%d)\r\n", deviceId.c_str(), bri); }
-void onAdjustBrightness(const String& deviceId, int bri)                    { Serial.printf("onAdjustBrightness(%s,%d)\r\n", deviceId.c_str(), bri); }
-void onDecColorTemperature(const String& deviceId)                          { Serial.printf("onDecColorTemperature(%s)\r\n", deviceId.c_str()); }
-void onIncColorTemperature(const String& deviceId)                          { Serial.printf("onIncColorTemperature(%s)\r\n", deviceId.c_str()); }
-void onSetColorTemperature(const String& deviceId, int color_temp)          { Serial.printf("onSetColorTemperature(%s,%d)\r\n", deviceId.c_str(), color_temp); }
+void onSetColor(SinricLight& device, double hue, double sat, double val) { Serial.printf("onSetColor(%s,%f,%f,%f)\r\n", device.getDeviceId(), hue, sat, val); }
+void onSetBrightness(SinricLight& device, int bri)                       { Serial.printf("onSetBrightness(%s,%d)\r\n", device.getDeviceId(), bri); }
+void onAdjustBrightness(SinricLight& device, int bri)                    { Serial.printf("onAdjustBrightness(%s,%d)\r\n", device.getDeviceId(), bri); }
+void onDecColorTemperature(SinricLight& device)                          { Serial.printf("onDecColorTemperature(%s)\r\n", device.getDeviceId()); }
+void onIncColorTemperature(SinricLight& device)                          { Serial.printf("onIncColorTemperature(%s)\r\n", device.getDeviceId()); }
+void onSetColorTemperature(SinricLight& device, int color_temp)          { Serial.printf("onSetColorTemperature(%s,%d)\r\n", device.getDeviceId(), color_temp); }
 
-void onSetTargetTemperature(const String& deviceId, double temp, const String& scale)    { Serial.printf("onSetTargetTemperature(%s,%f,%s)\r\n", deviceId.c_str(), temp, scale.c_str()); }
-void onAdjustTargetTemperature(const String& deviceId, double temp, const String& scale) { Serial.printf("onAdjustTargetTemperature(%s,%f,%s)\r\n", deviceId.c_str(), temp, scale.c_str()); }
-void onSetThermostatMode(const String& deviceId, const String& mode)                     { Serial.printf("onSetThermostatMode(%s,%s)\r\n", deviceId.c_str(), mode.c_str()); }
+void onSetTargetTemperature(SinricThermostat& device, double temp, const String& scale)    { Serial.printf("onSetTargetTemperature(%s,%f,%s)\r\n", device.getDeviceId(), temp, scale.c_str()); }
+void onAdjustTargetTemperature(SinricThermostat& device, double temp, const String& scale) { Serial.printf("onAdjustTargetTemperature(%s,%f,%s)\r\n", device.getDeviceId(), temp, scale.c_str()); }
+void onSetThermostatMode(SinricThermostat& device, const String& mode)                     { Serial.printf("onSetThermostatMode(%s,%s)\r\n", device.getDeviceId(), mode.c_str()); }
 
 // WiFi setup
 void setupWifi() {
-  Serial.begin(115200); 
+  Serial.begin(115200);
   delay(1000);
   Serial.printf("\r\nConnecting WiFi (%s)", ssid);
 
@@ -70,16 +63,16 @@ void setupSinric() {
   }
   Serial.println("connected!");
 
-  // add new Switch 
+  // add new Switch
   SinricSwitch& mySwitch = Sinric.add<SinricSwitch>(switchId);
   // set the callback
-  mySwitch.onPowerState(onPowerState);
+  mySwitch.onPowerState(onPowerSwitch);
   //mySwitch.onPowerState([](const char* deviceId, bool state) { Serial.printf("lambda power state %s,%s\r\n", deviceId, state?"true":"false"); } );
 
-  // add a new Light 
+  // add a new Light
   SinricLight& myLight = Sinric.add<SinricLight>(lightId);
-  // set the callbacks 
-  myLight.onPowerState(onPowerState);
+  // set the callbacks
+  myLight.onPowerState(onPowerLight);
   myLight.onSetColor(onSetColor);
   myLight.onSetBrightness(onSetBrightness);
   myLight.onAdjustBrightness(onAdjustBrightness);
@@ -87,10 +80,10 @@ void setupSinric() {
   myLight.onDecColorTemperature(onDecColorTemperature);
   myLight.onSetColorTemperature(onSetColorTemperature);
 
-  // add new Thermostat 
+  // add new Thermostat
   SinricThermostat& myThermo = Sinric.add<SinricThermostat>(thermoId);
   // set the callbacks for thermostat
-  myThermo.onPowerState(onPowerState);
+  myThermo.onPowerState(onPowerThermostat);
   myThermo.onSetTargetTemperature(onSetTargetTemperature);
   myThermo.onAdjustTargetTemperature(onAdjustTargetTemperature);
   myThermo.onSetThermostatMode(onSetThermostatMode);
@@ -124,4 +117,3 @@ void loop() {
   ArduinoOTA.handle();
   Sinric.handle();
 }
-

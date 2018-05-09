@@ -17,8 +17,8 @@ const char* deviceId = "your-device-id"
 ```
 #### define callback routine(s)
 ```
-void onPowerState(const string& deviceId, bool state) {
-  Serial.printf("device %s turned %s\r\n, deviceId.c_str(), state?"on":"off");
+void onPowerState(SinricSwitch& device, bool state) {
+  Serial.printf("device %s turned %s\r\n, device.getDeviceId(), state?"on":"off");
 }
 ```
 #### In setup()
@@ -31,7 +31,7 @@ void onPowerState(const string& deviceId, bool state) {
   mySwitch.onPowerState(onPowerState);
   ...
 ```
-  
+
 #### In loop()
 ```
   ...
@@ -42,28 +42,28 @@ void onPowerState(const string& deviceId, bool state) {
 - Switch (```SinricSwitch``` in SinricSwitch.h)
   - Callbacks:
   ```
-  onPowerState(const String& deviceId, bool state)
+  onPowerState(SinricSwitch& device, bool state)
   ```
 
 - Light (```SinricLight``` in SinricLight.h)
   - Callbacks:
   ```
-  onPowerState(const String& deviceId, bool state)
-  onSetBrightness(const String& deviceId, int brightness)
-  onAdjustBrightness(const String& deviceId, int brightness)
-  onSetColor(const String& deviceId, double hue, double sat, double value)
-  onDecColorTemperature(const String& deviceId)
-  onIncColorTemperature(const String& deviceId)
-  onSetColorTemperature(const String& deviceId, int colorTemperature)
+  onPowerState(SinricLight& device, bool state)
+  onSetBrightness(SinricLight& device, int brightness)
+  onAdjustBrightness(SinricLight& device, int brightness)
+  onSetColor(SinricLight& device, double hue, double sat, double value)
+  onDecColorTemperature(SinricLight& device)
+  onIncColorTemperature(SinricLight& device)
+  onSetColorTemperature(SinricLight& device, int colorTemperature)
   ```
 
 - Thermostat (```SinricThermostat``` in SinricThermostat.h)
   - Callbacks:
   ```
-  onPowerState(const String& deviceIde, bool state)
-  onSetTargetTemperature(const String& deviceId, double temperature, const String& scale)
-  onAdjustTargetTemperature(const String& deviceId, double temperature, const String& scale)
-  onSetThermostatMode(const String& deviceId, const String& mode)
+  onPowerState(SinricThermostat& device, bool state)
+  onSetTargetTemperature(SinricThermostat& device, double temperature, const String& scale)
+  onAdjustTargetTemperature(SinricThermostat& device, double temperature, const String& scale)
+  onSetThermostatMode(SinricThermostat& device, const String& mode)
   ```
 
 ## Simple add new or not yet implemented devices
@@ -73,7 +73,7 @@ void onPowerState(const string& deviceId, bool state) {
 - Provide callback setter function
 - Override handle() to handle incomming commands and call the right callbacks
 
-- Use the new device like the pre-defined 
+- Use the new device like the pre-defined
 ```
 myNewSinricDevice& newDevice = Sinric.add<myNewSinricDevice>(deviceId);
 newDevice.CallbackSetFunction(callback-function);
