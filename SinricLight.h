@@ -9,15 +9,15 @@ class SinricLight : public SinricDevice {
 
 	SinricLight(const char* deviceId);
 
-    typedef std::function<void(const String&, bool)>                   PowerStateCallback;
-    typedef std::function<void(const String&, int)>                    SetBrightnessCallback;
-    typedef std::function<void(const String&, int)>                    AdjustBrightnessCallback;
-    typedef std::function<void(const String&, double, double, double)> SetColorCallback;
-    typedef std::function<void(const String&)>                         DecColorTemperatureCallback;
-    typedef std::function<void(const String&)>                         IncColorTemperatureCallback;
-    typedef std::function<void(const String&, int)>                    SetColorTemperatureCallback;
+	typedef std::function<void(const String&, bool)>                   PowerStateCallback;
+	typedef std::function<void(const String&, int)>                    SetBrightnessCallback;
+	typedef std::function<void(const String&, int)>                    AdjustBrightnessCallback;
+	typedef std::function<void(const String&, double, double, double)> SetColorCallback;
+	typedef std::function<void(const String&)>                         DecColorTemperatureCallback;
+	typedef std::function<void(const String&)>                         IncColorTemperatureCallback;
+	typedef std::function<void(const String&, int)>                    SetColorTemperatureCallback;
 	
-    void onPowerState(PowerStateCallback callback)                   { powerState = callback; }
+	void onPowerState(PowerStateCallback callback)                   { powerState = callback; }
     void onSetBrightness(SetBrightnessCallback callback)             { setBrightness = callback; }
     void onAdjustBrightness(AdjustBrightnessCallback callback)       { adjustBrightness = callback; }
     void onSetColor(SetColorCallback callback)                       { setColor = callback; }
