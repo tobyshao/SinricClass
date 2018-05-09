@@ -16,15 +16,6 @@ public:
   typedef std::function<void(SinricLight&)>                         DecColorTemperatureCallback;
   typedef std::function<void(SinricLight&)>                         IncColorTemperatureCallback;
   typedef std::function<void(SinricLight&, int)>                    SetColorTemperatureCallback;
-=======
-    typedef std::function<void(const String&, bool)>                   PowerStateCallback;
-    typedef std::function<void(const String&, int)>                    SetBrightnessCallback;
-    typedef std::function<void(const String&, int)>                    AdjustBrightnessCallback;
-    typedef std::function<void(const String&, double, double, double)> SetColorCallback;
-    typedef std::function<void(const String&)>                         DecColorTemperatureCallback;
-    typedef std::function<void(const String&)>                         IncColorTemperatureCallback;
-    typedef std::function<void(const String&, int)>                    SetColorTemperatureCallback;
-	
 
   void onPowerState(PowerStateCallback callback)                   { powerState = callback; }
   void onSetBrightness(SetBrightnessCallback callback)             { setBrightness = callback; }
