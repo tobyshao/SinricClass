@@ -42,13 +42,13 @@ void onPowerState(SinricSwitch& device, bool state) {
 - Switch (```SinricSwitch``` in SinricSwitch.h)
   - Callbacks:
   ```
-  onPowerState(SinricSwitch& device, bool state)
+  onPowerState(SinricDevice& device, bool state)
   ```
 
 - Light (```SinricLight``` in SinricLight.h)
   - Callbacks:
   ```
-  onPowerState(SinricLight& device, bool state)
+  onPowerState(SinricDevice& device, bool state)
   onSetBrightness(SinricLight& device, int brightness)
   onAdjustBrightness(SinricLight& device, int brightness)
   onSetColor(SinricLight& device, double hue, double sat, double value)
@@ -60,7 +60,7 @@ void onPowerState(SinricSwitch& device, bool state) {
 - Thermostat (```SinricThermostat``` in SinricThermostat.h)
   - Callbacks:
   ```
-  onPowerState(SinricThermostat& device, bool state)
+  onPowerState(SinricDevice& device, bool state)
   onSetTargetTemperature(SinricThermostat& device, double temperature, const String& scale)
   onAdjustTargetTemperature(SinricThermostat& device, double temperature, const String& scale)
   onSetThermostatMode(SinricThermostat& device, const String& mode)
