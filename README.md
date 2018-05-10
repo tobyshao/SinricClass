@@ -17,7 +17,7 @@ const char* deviceId = "your-device-id"
 ```
 #### define callback routine(s)
 ```
-void onPowerState(SinricSwitch& device, bool state) {
+void onPowerState(SinricDevice& device, bool state) {
   Serial.printf("device %s turned %s\r\n, device.getDeviceId(), state?"on":"off");
 }
 ```
