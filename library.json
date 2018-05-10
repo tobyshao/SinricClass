@@ -1,12 +1,12 @@
 {
   "name": "Sinric",
   "version": "1.1",
-	"author": "sivar2311",
-	"maintainer": "sivar2311 sivar2311@gmail.com",
+  "author": "sivar2311",
+  "maintainer": "sivar2311 sivar2311@gmail.com",
   "keywords": "ethernet, sinric, alexa, iot",
-	"sentence": "A client library for Sinric.com",
-	"category": "communitacion",
-	"url":"",
-	"architecture": "*",
+  "sentence": "A client library for Sinric.com",
+  "category": "communitacion",
+  "url":"",
+  "architecture": "*",
   "includes": ["SinricDevice","SinricSwitch", "SinricLight", "SinricThermostat"]
 }

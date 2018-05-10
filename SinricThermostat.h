@@ -7,7 +7,7 @@
 
 class SinricThermostat : public SinricDevice {
 public:
-	typedef std::function<void(SinricThermostat&, bool)>                  PowerStateCallback;
+	typedef std::function<void(SinricDevice&, bool)>                      PowerStateCallback;
 	typedef std::function<void(SinricThermostat&, double, const String&)> SetTargetTemperatureCallback;
 	typedef std::function<void(SinricThermostat&, double, const String&)> AdjustTargetTemperatureCallback;
 	typedef std::function<void(SinricThermostat&, const String&)>         SetThermostatModeCallback;

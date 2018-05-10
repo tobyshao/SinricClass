@@ -13,7 +13,7 @@ const char* api_key = "1aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee";
 const char* switchId = "500000000000000000000000";
 
 // callback for switch...
-void onPowerState(SinricSwitch& device, bool state) {
+void onPowerState(SinricDevice& device, bool state) {
   Serial.printf("Switch id=%s is turned %s \r\n", device.getDeviceId(), state?"on":"off");
 }
 

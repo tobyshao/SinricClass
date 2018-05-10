@@ -6,10 +6,10 @@
 
 class SinricSwitch : public SinricDevice {
 public:
-  typedef std::function<void(SinricSwitch&, bool)> PowerStateCallback;
+  typedef std::function<void(SinricDevice&, bool)> PowerStateCallback;
 
   SinricSwitch(const char* deviceId );
-  
+
   void onPowerState(PowerStateCallback callback) { powerState = callback; }
   void handle(const String& action, JsonObject& json) override;
 private:

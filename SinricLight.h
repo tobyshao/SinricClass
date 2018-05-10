@@ -8,7 +8,7 @@ class SinricLight : public SinricDevice {
 public:
   SinricLight(const char* deviceId);
 
-  typedef std::function<void(SinricLight&, bool)>                   PowerStateCallback;
+  typedef std::function<void(SinricDevice&, bool)>                  PowerStateCallback;
   typedef std::function<void(SinricLight&, int)>                    SetBrightnessCallback;
   typedef std::function<void(SinricLight&, int)>                    AdjustBrightnessCallback;
   typedef std::function<void(SinricLight&, double, double, double)> SetColorCallback;

@@ -20,9 +20,7 @@ const char* thermoId = "522222222222222222222222";
 
 // callbacks for devices...
 
-void onPowerSwitch(SinricSwitch& device, bool state)         { Serial.printf("onPowerSwitch(%s,%s)", device.getDeviceId(), state?"true":"false"); }
-void onPowerLight(SinricLight& device, bool state)           { Serial.printf("onPowerSwitch(%s,%s)", device.getDeviceId(), state?"true":"false"); }
-void onPowerThermostat(SinricThermostat& device, bool state) { Serial.printf("onPowerSwitch(%s,%s)", device.getDeviceId(), state?"true":"false"); }
+void onPowerState(SinricDevice& device, bool state)          { Serial.printf("onPowerState(%s,%s)\r\n", device.getDeviceId(), state?"on":"off"); }
 
 void onSetColor(SinricLight& device, double hue, double sat, double val) { Serial.printf("onSetColor(%s,%f,%f,%f)\r\n", device.getDeviceId(), hue, sat, val); }
 void onSetBrightness(SinricLight& device, int bri)                       { Serial.printf("onSetBrightness(%s,%d)\r\n", device.getDeviceId(), bri); }
@@ -66,13 +64,13 @@ void setupSinric() {
   // add new Switch
   SinricSwitch& mySwitch = Sinric.add<SinricSwitch>(switchId);
   // set the callback
-  mySwitch.onPowerState(onPowerSwitch);
+  mySwitch.onPowerState(onPowerState);
   //mySwitch.onPowerState([](const char* deviceId, bool state) { Serial.printf("lambda power state %s,%s\r\n", deviceId, state?"true":"false"); } );
 
   // add a new Light
   SinricLight& myLight = Sinric.add<SinricLight>(lightId);
   // set the callbacks
-  myLight.onPowerState(onPowerLight);
+  myLight.onPowerState(onPowerState);
   myLight.onSetColor(onSetColor);
   myLight.onSetBrightness(onSetBrightness);
   myLight.onAdjustBrightness(onAdjustBrightness);
@@ -83,7 +81,7 @@ void setupSinric() {
   // add new Thermostat
   SinricThermostat& myThermo = Sinric.add<SinricThermostat>(thermoId);
   // set the callbacks for thermostat
-  myThermo.onPowerState(onPowerThermostat);
+  myThermo.onPowerState(onPowerState);
   myThermo.onSetTargetTemperature(onSetTargetTemperature);
   myThermo.onAdjustTargetTemperature(onAdjustTargetTemperature);
   myThermo.onSetThermostatMode(onSetThermostatMode);
