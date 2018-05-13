@@ -16,34 +16,34 @@ class SinricClass {
     void handle();
     void stop();
     bool isConnected();
-	
+
     void send(const char* data);
     void send(const String& data);
 
-    template <typename DeviceType> 
+    template <typename DeviceType>
     DeviceType& add(const char* deviceId);
-    template <typename DeviceType> 
+    template <typename DeviceType>
     DeviceType& add(const String& deviceId);
 
   private:
     bool _is_connected = false;
     unsigned long _lastHeartBeat;
     unsigned long _heartBeatInterval;
-    
+
     WebSocketsClient client;
     std::vector<SinricDevice*> devices;
 
     void webSocketEvent(WStype_t type, uint8_t * payload, size_t length);
 };
 
-SinricClass::SinricClass() : 
-  _is_connected(false), 
+SinricClass::SinricClass() :
+  _is_connected(false),
   _lastHeartBeat(0) {
 };
 
 SinricClass::~SinricClass() {
   stop();
-  
+
   for (auto& device : devices) {
     delete device;
     device = nullptr;
@@ -58,10 +58,10 @@ void SinricClass::begin(const char* api_key, unsigned long heartBeatInterval) {
   _heartBeatInterval = heartBeatInterval;
 
   client.begin("iot.sinric.com", 80, "/");
-  client.onEvent([&](WStype_t type, uint8_t * payload, size_t length) { webSocketEvent(type, payload, length); });
+  client.onEvent(std::bind(&SinricClass::webSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_2));
   client.setAuthorization("apikey", api_key);
   client.setReconnectInterval(5000);
-  
+
   _lastHeartBeat = millis();
 }
 
@@ -71,7 +71,7 @@ void SinricClass::begin(const String& api_key, unsigned long heartBeatInterval) 
 
 void SinricClass::handle() {
   client.loop();
-  
+
   if (_is_connected) {
     unsigned long actualMillis = millis();
     if (actualMillis - _lastHeartBeat > (_heartBeatInterval * 1000)) {
@@ -88,8 +88,8 @@ void SinricClass::stop() {
   }
 }
 
-bool SinricClass::isConnected() { 
-  handle(); 
+bool SinricClass::isConnected() {
+  handle();
   return _is_connected;
 };
 
