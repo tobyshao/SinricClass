@@ -13,7 +13,7 @@
       "name": "sivar2311",
       "email": "sivar2311@gmail.com",
       "maintainer": true
-    },
+    }],
   "version": "1.0",
   "frameworks": "arduino",
   "platforms": "*"
