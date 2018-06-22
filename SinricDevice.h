@@ -7,7 +7,7 @@ class SinricDevice {
   public:
     SinricDevice(const char* newDeviceId);
     SinricDevice(const String& newDeviceId);
-    ~SinricDevice();
+    virtual ~SinricDevice();
 
     virtual void handle(const String& action, JsonObject& json) {};
     const char* getDeviceId();
