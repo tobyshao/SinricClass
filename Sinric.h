@@ -58,7 +58,7 @@ void SinricClass::begin(const char* api_key, unsigned long heartBeatInterval) {
   _heartBeatInterval = heartBeatInterval;
 
   client.begin("iot.sinric.com", 80, "/");
-  client.onEvent(std::bind(&SinricClass::webSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_2));
+  client.onEvent(std::bind(&SinricClass::webSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
   client.setAuthorization("apikey", api_key);
   client.setReconnectInterval(5000);
 
