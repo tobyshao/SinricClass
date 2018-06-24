@@ -26,7 +26,7 @@ void onPowerState(const string& deviceId, bool state) {
   ...
   Sinric.begin(api_key);
   // add a switch
-  SinricSwitch& mySwitch Sinric.add<SinricSwitch>(deviceId);
+  SinricSwitch& mySwitch = Sinric.add<SinricSwitch>(deviceId);
   // set callback function
   mySwitch.onPowerState(onPowerState);
   ...
