@@ -22,7 +22,7 @@ class SinricLight : public SinricDevice {
     void onAdjustBrightness(AdjustBrightnessCallback callback)       { adjustBrightness = callback; }
     void onSetColor(SetColorCallback callback)                       { setColor = callback; }
     void onDecColorTemperature(DecColorTemperatureCallback callback) { decColorTemperature = callback; }
-    void onIncColorTemperature(IncColorTemperatureCallback callback) { decColorTemperature = callback; }
+    void onIncColorTemperature(IncColorTemperatureCallback callback) { incColorTemperature = callback; }
     void onSetColorTemperature(SetColorTemperatureCallback callback) { setColorTemperature = callback; }
 
     void handle(const String& action, JsonObject& json) override;
