@@ -82,3 +82,8 @@ newDevice.CallbackSetFunction(callback-function);
 ## Dependencies / Needed libraries
 - WebSocketsClient -> https://github.com/Links2004/arduinoWebSockets/releases
 - ArduinoJson -> https://arduinojson.org/
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbOTE3OTIyOTQxXX0=
+-->
